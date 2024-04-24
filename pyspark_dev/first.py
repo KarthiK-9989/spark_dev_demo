@@ -2,7 +2,7 @@ import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 
-os.environ["PYSPARK_PYTHON"] = "python"  # or "python" depending on your Python executable
+os.environ["PYSPARK_PYTHON"] = "C:/Users/Karthik Kondpak/AppData/Local/Programs/Python/Python37/python.exe"  # or "python" depending on your Python executable
 
 # Create a Spark session
 spark = SparkSession.builder.appName("PySparkExample").getOrCreate()
