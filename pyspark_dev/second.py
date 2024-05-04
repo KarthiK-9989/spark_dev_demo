@@ -1,51 +1,62 @@
+class Node:
+  def __init__(self, data, next=None):
+    self.data = data
+    self.next = next
 
-num=1
-for i in range(1, 6):
-  # Print numbers in the current row
-  for j in range(1, i + 1):
-    print(num, end=" ")
-    num=num+1
-  # Move to the next line after each row
-  print()
+class LinkedList:
+  def __init__(self):
+    self.head = None
 
+  def append(self, data):
+    new_node = Node(data)
+    if self.head is None:
+      self.head = new_node
+    else:
+      current = self.head
+      while current.next is not None:
+        current = current.next
+      current.next = new_node
 
-#
-# #
-# i=1;
-# while i<=10:
-#     print(i,end=" ")
-#     i=i+1
+  def display(self):
+    current = self.head
+    while current is not None:
+      print(current.data, end=" -> ")
+      current = current.next
+    print("null")
 
-#
-#
-# for i in range(1,5):
-#     print(i)
+  def delete(self, data):
+    if self.head is None:
+      return
 
+    # Handle deleting the head node
+    if self.head.data == data:
+      self.head = self.head.next
+      return
 
+    current = self.head
+    prev = None
+    while current is not None and current.next is not None:
+      if current.next.data == data:
+        prev.next = current.next.next
+        return
+      prev = current
+      current = current.next
 
-# num = 331
-# a = num
-# rev = 0;
-# rem = 0;
-# while (num >0):
-#     rem = num % 10
-#     rev = rev+ rem
-#     num = num // 10
-# print(rev)
-# if (rev == a):
-#     print("given number is palindrome")
-# else:
-#     print("given number is not palindrome")
+    # If loop completes without finding the element, it wasn't present
+    print("Element not found in the list")
 
+# Example usage
+linked_list = LinkedList()
 
+linked_list.append(10)
+linked_list.append(20)
+linked_list.append(30)
 
+print("Linked List:")
+linked_list.display()
 
+element_to_delete = 10
+linked_list.delete(element_to_delete)
 
-
-
-
-
-
-
-
-
+print(f"\nLinked List after deleting {element_to_delete}:")
+linked_list.display()
